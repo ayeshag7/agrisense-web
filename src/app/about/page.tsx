@@ -17,7 +17,7 @@ const page = () => {
         </section>
         <StatisticsSection/>
         <p className="text-lg text-gray-700 max-w-6xl mx-auto mt-4 mb-20 text-left pl-10">
-          By deploying drone-based multispectral imaging for crop health analysis, IoT-enabled smart irrigation systems for precise water management, and AI-driven disease diagnostics for early detection and intervention, AgriSense minimizes crop losses, optimizes resource utilization, and accelerates the adoption of precision agriculture practices. These innovations collectively enhance productivity, sustainability, and resilience in Pakistan's agricultural landscape.</p>
+          By deploying drone-based multispectral imaging for crop health analysis, IoT-enabled smart irrigation systems for precise water management, and AI-driven disease diagnostics for early detection and intervention, AgriSense minimizes crop losses, optimizes resource utilization, and accelerates the adoption of precision agriculture practices. These innovations collectively enhance productivity, sustainability, and resilience in Pakistan&apos;s agricultural landscape.</p>
       </main>
       <Footer/>
     </>
