@@ -35,18 +35,22 @@ export const Header = () => {
                     </span>
                 </Link>
                 <div className="flex md:order-2 space-x-3">
-                    <button
-                        type="button"
-                        className="font-medium rounded-lg text-base px-5 py-2.5 border-2 border-[#59981A] text-black bg-transparent hover:bg-[#ECF87F]"
-                    >
-                        Login
-                    </button>
-                    <button
-                        type="button"
-                        className="font-medium rounded-lg text-base px-5 py-2.5 max-sm:mt-4 bg-[#81B622] text-white hover:bg-green-600"
-                    >
-                        Get started
-                    </button>
+                    <Link href="/login">
+                        <button
+                            type="button"
+                            className="font-medium rounded-lg text-base px-5 py-2.5 border-2 border-[#59981A] text-black bg-transparent hover:bg-[#ECF87F]"
+                        >
+                            Login
+                        </button>
+                    </Link>
+                    <Link href="/signup">
+                        <button
+                            type="button"
+                            className="font-medium rounded-lg text-base px-5 py-2.5 max-sm:mt-4 bg-[#81B622] text-white hover:bg-green-600"
+                        >
+                            Get started
+                        </button>
+                    </Link>
                     <button
                         type="button"
                         className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 max-sm:mt-4"

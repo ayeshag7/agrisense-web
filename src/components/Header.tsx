@@ -61,9 +61,10 @@ export const Header = () => {
                     </span>
                 </Link>
                 <div className="flex md:order-2 space-x-3">
+                    <Link href="/login">
                     <button
                         type="button"
-                        className={`font-medium rounded-lg text-base px-5 py-2.5 transition-all duration-300 ${
+                        className={`font-medium rounded-lg text-base px-5 py-2 transition-all duration-300 ${
                             isScrolled
                                 ? "border-2 border-[#ECF87F] text-white bg-transparent hover:bg-[#f5f5f5]"
                                 : "border-2 border-[#59981A] text-black bg-transparent hover:bg-[#ECF87F]"
@@ -71,6 +72,8 @@ export const Header = () => {
                     >
                         Login
                     </button>
+                    </Link>
+                    <Link href="/signup">
                     <button
                         type="button"
                         className={`font-medium rounded-lg text-base px-5 py-2.5 max-sm:mt-4 transition-all duration-300 ${
@@ -81,6 +84,7 @@ export const Header = () => {
                     >
                         Get started
                     </button>
+                    </Link>
                     <button
                         type="button"
                         className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 max-sm:mt-4"
