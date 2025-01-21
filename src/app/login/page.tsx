@@ -124,7 +124,7 @@ const LoginPage: React.FC = () => {
           </button>
         </form>
         <p className="text-gray-600 mt-4 text-center">
-          Don't have an account?{' '}
+          Don&apos;t have an account?{' '}
           <button
             onClick={() => router.push('/signup')}
             className="text-gray-800 hover:underline border-none bg-transparent focus:outline-none"

@@ -53,8 +53,8 @@ const SignUp: React.FC = () => {
         formData.phoneNumber
       );
       router.push('/requestpending');
-    } catch (error: any) {
-      alert(`Error: ${error.message}`);
+    } catch (error: unknown) {
+      alert(`Error: ${error}`);
     }
   };
 

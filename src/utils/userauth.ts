@@ -47,9 +47,15 @@ export const signUpUser = async (
     });
 
     console.log("User signed up and data stored successfully.");
-  } catch (error: any) {
-    console.error("Error signing up user:", error.message);
-    throw new Error(error.message);
+  } catch (error: unknown) {
+    // Safely handle error
+    if (error instanceof Error) {
+      console.error("Error signing up user:", error.message);
+      throw new Error(error.message);
+    } else {
+      console.error("Unknown error occurred during signup.");
+      throw new Error("An unknown error occurred during signup.");
+    }
   }
 };
 
@@ -69,8 +75,14 @@ export const loginUser = async (email: string, password: string): Promise<void> 
     if (userCredential.user) {
       console.log("User logged in successfully.");
     }
-  } catch (error: any) {
-    console.error("Error logging in user:", error.message);
-    throw new Error(error.message);
+  } catch (error: unknown) {
+    // Safely handle error
+    if (error instanceof Error) {
+      console.error("Error logging in user:", error.message);
+      throw new Error(error.message);
+    } else {
+      console.error("Unknown error occurred during login.");
+      throw new Error("An unknown error occurred during login.");
+    }
   }
 };
