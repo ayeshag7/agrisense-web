@@ -41,27 +41,32 @@ const LoginPage: React.FC = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const { email, password } = formData;
-
+  
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailPattern.test(email)) {
       setError('Please enter a valid email address.');
       return;
     }
-
+  
     setLoading(true);
     setError(null);
-
+  
     try {
       // Call the login function
       await loginUser(email, password);
-
+  
       setLoading(false);
       setSuccess("Login successful!");
-    } catch (err: any) {
+    } catch (error: unknown) {
       setLoading(false);
-      setError('Invalid credentials, please try again.');
+      if (error instanceof Error) {
+        setError('Invalid credentials, please try again.');
+      } else {
+        setError('An unknown error occurred.');
+      }
     }
   };
+  
 
   return (
     <div className="flex flex-col justify-center items-center h-screen w-screen bg-white text-black">
