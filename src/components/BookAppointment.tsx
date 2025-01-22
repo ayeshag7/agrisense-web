@@ -1,8 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation"; // Import useRouter for navigation
+import { makeBooking } from "../utils/booking"; 
 
 const BookAppointment: React.FC = () => {
+  const router = useRouter(); // Initialize router
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,11 +20,14 @@ const BookAppointment: React.FC = () => {
     time: "",
   });
 
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    setErrorMessage(null); // Clear error message on input change
   };
 
   const validateForm = () => {
@@ -50,13 +56,17 @@ const BookAppointment: React.FC = () => {
     return !Object.values(newErrors).some((error) => error);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (validateForm()) {
-      console.log("Appointment booked:", formData);
-      alert("Appointment booked successfully!");
-      setFormData({ name: "", email: "", date: "", time: "" });
+      try {
+        await makeBooking(formData);
+        setFormData({ name: "", email: "", date: "", time: "" });
+        router.push("/bookingpending"); // Navigate to booking pending page
+      } catch (error: any) {
+        setErrorMessage(error.message || "An error occurred while booking.");
+      }
     }
   };
 
@@ -141,6 +151,10 @@ const BookAppointment: React.FC = () => {
             <p className="text-red-500 text-sm mt-1">{errors.time}</p>
           )}
         </div>
+
+        {errorMessage && (
+          <p className="text-red-500 text-center mt-2">{errorMessage}</p>
+        )}
 
         <button
           type="submit"
