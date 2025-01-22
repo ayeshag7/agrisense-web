@@ -58,18 +58,23 @@ const BookAppointment: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     if (validateForm()) {
       try {
         await makeBooking(formData);
         setFormData({ name: "", email: "", date: "", time: "" });
         router.push("/bookingpending"); // Navigate to booking pending page
-      } catch (error: any) {
-        setErrorMessage(error.message || "An error occurred while booking.");
+      } catch (error) {
+        if (error instanceof Error) {
+          // Narrowing the error to an Error instance
+          setErrorMessage(error.message || "An error occurred while booking.");
+        } else {
+          // Handle non-Error types
+          setErrorMessage("An unknown error occurred while booking.");
+        }
       }
     }
-  };
-
+  };  
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-sm shadow-[#59981A]">
       <h2 className="text-2xl font-semibold text-center mb-4 text-gray-800">
